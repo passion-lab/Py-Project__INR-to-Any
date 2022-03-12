@@ -36,7 +36,7 @@ try:
     with open("./currencyData.csv", "w") as file:
         file.write("_TIMESTAMP_," + str(datetime.now()) + "\n" + data_v1)
 
-    print("\rDatabase updated!")
+    print("\rDatabase updated!\n\n")
     update = True
 except:
     print("\rDatabase not updated! Network can't be reached right now.")
@@ -50,6 +50,7 @@ with open("./currencyData.csv", "rt") as file:
 if update is False:
     print(f"Working with last updated data ...\n[Last Updated: {update_date[1]}]\n\n")
 
+print("List of available countries. Please choose a number to continue:\n")
 country = ""
 for index, item in enumerate(currency_data):
     country += f"[{index + 1}] {item.split(',')[0]};  "
@@ -58,7 +59,7 @@ for index, item in enumerate(currency_data):
 print("{}".format(fill(text=country, width=get_terminal_size().columns - 2)))
 
 print("\nConvert currency from Indian Rupees (INR) _________________________")
-# 2. convert to?
+# 1. convert to?
 while True:
     convert_to = input(" _To: ").strip()
     if convert_to.isdigit():
@@ -74,12 +75,12 @@ while True:
 
 # for which value?
 while True:
-    convert_val = input(f" _Enter value in {currency_data[convert_to - 1].split(',')[0]}: ").strip()
-    if convert_val.isdigit():
+    convert_val = input(f" _Enter a value in INR: ").strip()
+    try:
         convert_val = float(convert_val)
         break
-    else:
-        print("Not a valid input! Please type only available number corresponding to each country.")
+    except ValueError:
+        print("  Not a valid input! Please type only available number corresponding to each country.")
         continue
 
 # conversion process=
