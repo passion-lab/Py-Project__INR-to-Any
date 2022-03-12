@@ -50,12 +50,12 @@ with open("./currencyData.csv", "rt") as file:
 if update is False:
     print(f"Working with last updated data ...\n[Last Updated: {update_date[1]}]\n\n")
 
-print("List of available countries. Please choose a number to continue:\n")
 country = ""
 for index, item in enumerate(currency_data):
     country += f"[{index + 1}] {item.split(',')[0]};  "
 
 # display available countries
+print("List of available countries. Please choose a number to continue:\n")
 print("{}".format(fill(text=country, width=get_terminal_size().columns - 2)))
 
 print("\nConvert currency from Indian Rupees (INR) _________________________")
@@ -70,7 +70,7 @@ while True:
             print("Option is out of range! Try again.")
             continue
     else:
-        print("Not a valid input! Please type only available number corresponding to each country.")
+        print("  Not a valid input! Please type only available number corresponding to each country.")
         continue
 
 # for which value?
